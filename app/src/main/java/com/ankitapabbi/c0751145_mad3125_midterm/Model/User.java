@@ -1,0 +1,37 @@
+package com.ankitapabbi.c0751145_mad3125_midterm.Model;
+
+public class User {
+    private String userId;
+    private String userEmail;
+    private String userPassword;
+
+    public User(String userId, String userEmail, String userPassword) {
+        this.userId = userId;
+        this.userEmail = userEmail;
+        this.userPassword = userPassword;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
+    }
+
+    public String getUserEmail() {
+        return userEmail;
+    }
+
+    public void setUserEmail(String userEmail) {
+        this.userEmail = userEmail;
+    }
+
+    public String getUserPassword() {
+        return userPassword;
+    }
+
+    public void setUserPassword(String userPassword) {
+        this.userPassword = userPassword;
+    }
+}
