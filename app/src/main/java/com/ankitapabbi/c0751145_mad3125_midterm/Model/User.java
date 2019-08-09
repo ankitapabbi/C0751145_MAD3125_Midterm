@@ -8,11 +8,11 @@ public class User {
     public User() {
     }
 
-    public User(String userId, String userEmail, String userPassword) {
-        this.userId = userId;
-        this.userEmail = userEmail;
-        this.userPassword = userPassword;
-    }
+//    public User(String userId, String userEmail, String userPassword) {
+//        this.userId = userId;
+//        this.userEmail = userEmail;
+//        this.userPassword = userPassword;
+//    }
 
     public String getUserId() {
         return userId;
