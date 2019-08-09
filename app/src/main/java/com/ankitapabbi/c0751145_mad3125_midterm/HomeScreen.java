@@ -1,5 +1,6 @@
 package com.ankitapabbi.c0751145_mad3125_midterm;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,6 +17,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.ankitapabbi.c0751145_mad3125_midterm.Adapter.MyAdapter;
+import com.ankitapabbi.c0751145_mad3125_midterm.Interfaces.AdapterListener;
 import com.ankitapabbi.c0751145_mad3125_midterm.Interfaces.volley_interface;
 import com.ankitapabbi.c0751145_mad3125_midterm.Model.MissionData;
 import com.ankitapabbi.c0751145_mad3125_midterm.Singleton.Common;
@@ -28,7 +30,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-public class HomeScreen extends AppCompatActivity {
+public class HomeScreen extends AppCompatActivity implements AdapterListener {
 
     RecyclerView dataRecyler;
     RecyclerView.Adapter adapter;
@@ -47,7 +49,7 @@ public class HomeScreen extends AppCompatActivity {
         dataRecyler.setNestedScrollingEnabled(false);
        // listData.clear();
         jsonRequest();
-        adapter= new MyAdapter(listData,getApplicationContext());
+        adapter= new MyAdapter(listData,getApplicationContext(),this);
         dataRecyler.setAdapter(adapter);
        // volley_missionData();
 
@@ -175,5 +177,11 @@ public class HomeScreen extends AppCompatActivity {
         });
         requestQueue= Volley.newRequestQueue(getApplicationContext());
         requestQueue.add(request);
+    }
+
+    @Override
+    public void clicked(String flight_number, String mission_name, String launch_year, String launch_date_unix, String launch_date_utc, String rocket_id, String rocket_name, String rocket_type, String article_link, String wikipedia, String mission_patch) {
+
+        
     }
 }

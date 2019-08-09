@@ -80,6 +80,7 @@ public class LoginScreen extends AppCompatActivity {
                 Intent intent = new Intent(LoginScreen.this,HomeScreen.class);
                 intent.putExtra("email",email);
                 startActivity(intent);
+                finish();
             }
             else if (count == 0){
                 Toast.makeText(LoginScreen.this,"Invalid Email Or Password",Toast.LENGTH_LONG).show();
