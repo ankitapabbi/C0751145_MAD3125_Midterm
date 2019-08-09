@@ -1,12 +1,14 @@
 package com.ankitapabbi.c0751145_mad3125_midterm;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -38,13 +40,21 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
     private RequestQueue requestQueue;
     private final String JSON_URL="https://api.spacexdata.com/v3/launches";
     private JsonArrayRequest request;
+
+    Button logout;
+    SharedPreferences.Editor editor;
+    private SharedPreferences sharedPreferences;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
         dataRecyler = (RecyclerView)findViewById(R.id.dataRecyler);
+        logout = (Button)findViewById(R.id.logoutBtn);
 //        queue = Volley.newRequestQueue(this);
 
+        sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
         dataRecyler.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         dataRecyler.setNestedScrollingEnabled(false);
        // listData.clear();
@@ -53,6 +63,19 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
         dataRecyler.setAdapter(adapter);
        // volley_missionData();
 
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+               // Toast.makeText(getApplicationContext(),"Clicked",Toast.LENGTH_LONG).show();
+                editor.remove("userEmail");
+                editor.remove("userPassword");
+                editor.apply();
+
+                Intent  in = new Intent(getApplicationContext(),LoginScreen.class);
+                startActivity(in);
+                finish();
+            }
+        });
 
     }
 
