@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 
+import com.ankitapabbi.c0751145_mad3125_midterm.Model.MissionData;
 import com.bumptech.glide.Glide;
 
 public class DetailScreen extends AppCompatActivity {
@@ -58,21 +59,32 @@ public class DetailScreen extends AppCompatActivity {
 
         final Intent intent = getIntent();
 
-        
-
-
-        flightNumber.setText(intent.getStringExtra("flight_number"));
-        missionName.setText(intent.getStringExtra("mission_name"));
-        launchYear.setText(intent.getStringExtra("launch_year"));
-        launchDateUnix.setText(intent.getStringExtra("launch_date_unix"));
-        launchDateUtc.setText(intent.getStringExtra("launch_date_utc"));
-        rocketId.setText(intent.getStringExtra("rocket_id"));
-        rocketName.setText(intent.getStringExtra("rocket_name"));
-        rocketType.setText(intent.getStringExtra("rocket_type"));
-        articallink.setText(intent.getStringExtra("article_link"));
-        wikiLink = intent.getStringExtra("wikipedia");
+        Bundle bundle = getIntent().getExtras();
+        MissionData missionData = (MissionData)bundle.getParcelable("MissionData") ;
+        flightNumber.setText(missionData.getFlight_number());
+        missionName.setText(missionData.getMission_name());
+        launchYear.setText(missionData.getLaunch_year());
+        launchDateUnix.setText(missionData.getLaunch_date_unix());
+        launchDateUtc.setText(missionData.getLaunch_date_utc());
+        rocketId.setText(missionData.getRocket_id());
+        rocketName.setText(missionData.getRocket_name());
+        rocketType.setText(missionData.getRocket_type());
+        articallink.setText(missionData.getArticle_link());
+        wikiLink = missionData.getWikipedia();
         Glide.with(getApplicationContext()).load(intent.getStringExtra("mission_patch")).into(mPatch);
-        toolbar.setTitle(intent.getStringExtra("mission_name"));
+
+//        flightNumber.setText(intent.getStringExtra("flight_number"));
+//        missionName.setText(intent.getStringExtra("mission_name"));
+//        launchYear.setText(intent.getStringExtra("launch_year"));
+//        launchDateUnix.setText(intent.getStringExtra("launch_date_unix"));
+//        launchDateUtc.setText(intent.getStringExtra("launch_date_utc"));
+//        rocketId.setText(intent.getStringExtra("rocket_id"));
+//        rocketName.setText(intent.getStringExtra("rocket_name"));
+//        rocketType.setText(intent.getStringExtra("rocket_type"));
+//        articallink.setText(intent.getStringExtra("article_link"));
+//        wikiLink = intent.getStringExtra("wikipedia");
+//        Glide.with(getApplicationContext()).load(intent.getStringExtra("mission_patch")).into(mPatch);
+        toolbar.setTitle(missionData.getMission_name());
 
 
         btninfo.setOnClickListener(new View.OnClickListener() {
