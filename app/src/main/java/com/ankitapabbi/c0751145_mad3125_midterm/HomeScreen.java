@@ -138,6 +138,24 @@ public class HomeScreen extends AppCompatActivity {
 
                         JSONArray array1 = jsonObject.getJSONArray("rocket");
 
+                        for (int ii=0;ii<=array1.length();ii++){
+                            JSONObject object = array1.getJSONObject(ii);
+                             missionData.setRocket_id(object.getString("rocket_id"));
+                             missionData.setRocket_name(object.getString("rocket_name"));
+                             missionData.setRocket_type(object.getString("rocket_type"));
+
+                        }
+                        JSONArray array2 = jsonObject.getJSONArray("links");
+
+                        for (int io=0;io<=array2.length();io++){
+                            JSONObject object = array1.getJSONObject(io);
+                            missionData.setArticle_link(object.getString("article_link"));
+                            missionData.setWikipedia(object.getString("wikipedia"));
+                            missionData.setMission_patch(object.getString("mission_patch"));
+
+                        }
+                        listData.add(missionData);
+                        adapter.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
