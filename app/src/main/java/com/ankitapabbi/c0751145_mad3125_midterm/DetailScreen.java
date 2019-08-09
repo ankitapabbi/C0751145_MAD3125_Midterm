@@ -58,6 +58,9 @@ public class DetailScreen extends AppCompatActivity {
 
         final Intent intent = getIntent();
 
+        
+
+
         flightNumber.setText(intent.getStringExtra("flight_number"));
         missionName.setText(intent.getStringExtra("mission_name"));
         launchYear.setText(intent.getStringExtra("launch_year"));

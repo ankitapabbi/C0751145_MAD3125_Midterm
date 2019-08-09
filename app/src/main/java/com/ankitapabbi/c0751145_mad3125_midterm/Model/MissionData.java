@@ -1,6 +1,9 @@
 package com.ankitapabbi.c0751145_mad3125_midterm.Model;
 
-public class MissionData {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class MissionData implements Parcelable {
 
 
     private String flight_number;
@@ -15,6 +18,34 @@ public class MissionData {
     private String wikipedia;
     private String mission_patch;
 
+    public MissionData() {
+    }
+
+    protected MissionData(Parcel in) {
+        flight_number = in.readString();
+        mission_name = in.readString();
+        launch_year = in.readString();
+        launch_date_unix = in.readString();
+        launch_date_utc = in.readString();
+        rocket_id = in.readString();
+        rocket_name = in.readString();
+        rocket_type = in.readString();
+        article_link = in.readString();
+        wikipedia = in.readString();
+        mission_patch = in.readString();
+    }
+
+    public static final Creator<MissionData> CREATOR = new Creator<MissionData>() {
+        @Override
+        public MissionData createFromParcel(Parcel in) {
+            return new MissionData(in);
+        }
+
+        @Override
+        public MissionData[] newArray(int size) {
+            return new MissionData[size];
+        }
+    };
 
     public String getFlight_number() {
         return flight_number;
@@ -102,5 +133,25 @@ public class MissionData {
 
     public void setMission_patch(String mission_patch) {
         this.mission_patch = mission_patch;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(flight_number);
+        dest.writeString(mission_name);
+        dest.writeString(launch_year);
+        dest.writeString(launch_date_unix);
+        dest.writeString(launch_date_utc);
+        dest.writeString(rocket_id);
+        dest.writeString(rocket_name);
+        dest.writeString(rocket_type);
+        dest.writeString(article_link);
+        dest.writeString(wikipedia);
+        dest.writeString(mission_patch);
     }
 }

@@ -44,7 +44,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
     Button logout;
     SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
-    private MissionData md;
+     MissionData  md = new MissionData();
 
 
     @Override
@@ -53,7 +53,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
         setContentView(R.layout.activity_home_screen);
         dataRecyler = (RecyclerView)findViewById(R.id.dataRecyler);
         logout = (Button)findViewById(R.id.logoutBtn);
-        md = new MissionData();
+
 //        queue = Volley.newRequestQueue(this);
 
         sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
@@ -210,7 +210,17 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
 
         Intent intent = new Intent(HomeScreen.this,DetailScreen.class);
 
-    
+       md.setFlight_number(flight_number);
+       md.setMission_name(mission_name);
+       md.setLaunch_year(launch_year);
+       md.setLaunch_date_unix(launch_date_unix);
+       md.setLaunch_date_utc(launch_date_utc);
+       md.setRocket_id(rocket_id);
+       md.setRocket_name(rocket_name);
+       md.setRocket_type(rocket_type);
+       md.setArticle_link(article_link);
+       md.setWikipedia(wikipedia);
+       md.setMission_patch(mission_patch);
 
         intent.putExtra("flight_number",flight_number);
         intent.putExtra("mission_name",mission_name);
@@ -223,6 +233,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
         intent.putExtra("article_link",article_link);
         intent.putExtra("wikipedia",wikipedia);
         intent.putExtra("mission_patch",mission_patch);
+        intent.putExtra("MissionData",md);
 
         Toast.makeText(getApplicationContext(),mission_name,Toast.LENGTH_LONG).show();
 
