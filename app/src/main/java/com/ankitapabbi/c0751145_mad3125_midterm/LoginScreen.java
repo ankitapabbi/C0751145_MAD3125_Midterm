@@ -1,5 +1,7 @@
 package com.ankitapabbi.c0751145_mad3125_midterm;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,7 +19,7 @@ public class LoginScreen extends AppCompatActivity {
     EditText userEmail,userPassword;
     Button login;
     MyDataBase mdb;
-    ArrayList<User> arrayList;
+    SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +33,9 @@ public class LoginScreen extends AppCompatActivity {
         mdb.save("vishal@gmail.com","vishal123");
         mdb.save("diksha@gmail.com","diksha123");
         mdb.close();
+
+        sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
+        final SharedPreferences.Editor editor = sharedPreferences.edit();
 
       //  Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
 
@@ -53,6 +58,17 @@ public class LoginScreen extends AppCompatActivity {
 //
                // Toast.makeText(LoginScreen.this,email,Toast.LENGTH_LONG).show();
             int count =  mdb.checkUserExist(email,password);
+
+            if(count != 0 ){
+                editor.putString("userEmail",email);
+                editor.putString("userPassword",password);
+                Intent intent = new Intent(LoginScreen.this,HomeScreen.class);
+                intent.putExtra("email",email);
+                startActivity(intent);
+            }
+            else if (count == 0){
+                Toast.makeText(LoginScreen.this,"Invalid Email Or Password",Toast.LENGTH_LONG).show();
+            }
 
                Toast.makeText(LoginScreen.this,""+count,Toast.LENGTH_LONG).show();
 
