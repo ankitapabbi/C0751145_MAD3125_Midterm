@@ -86,7 +86,7 @@ public class LoginScreen extends AppCompatActivity {
                 Toast.makeText(LoginScreen.this,"Invalid Email Or Password",Toast.LENGTH_LONG).show();
             }
 
-               Toast.makeText(LoginScreen.this,""+count,Toast.LENGTH_LONG).show();
+              // Toast.makeText(LoginScreen.this,""+count,Toast.LENGTH_LONG).show();
 
 
                 mdb.close();

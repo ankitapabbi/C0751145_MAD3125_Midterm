@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
 
 import com.bumptech.glide.Glide;
 
@@ -17,6 +20,7 @@ public class DetailScreen extends AppCompatActivity {
     TextView missionName,launchYear,launchDateUnix,launchDateUtc,rocketId,rocketName,rocketType,articallink,flightNumber;
     String wikiLink;
     FloatingActionButton btninfo;
+    Toolbar toolbar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +36,27 @@ public class DetailScreen extends AppCompatActivity {
         articallink = (TextView)findViewById(R.id.arcticalLink);
         flightNumber = (TextView)findViewById(R.id.flightNumber);
         btninfo = (FloatingActionButton) findViewById(R.id.btninfo);
+        toolbar = (Toolbar)findViewById(R.id.toolbar);
 
 
 
 
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
+        //  tb.setBackgroundColor(getResources().getColor(R.color.white));
+        toolbar.setNavigationIcon(getResources().getDrawable(R.drawable.ic_arrow_back_black_24dp));
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
 
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
 
         flightNumber.setText(intent.getStringExtra("flight_number"));
         missionName.setText(intent.getStringExtra("mission_name"));
@@ -57,7 +74,10 @@ public class DetailScreen extends AppCompatActivity {
         btninfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+            Intent intent1 = new Intent(getApplicationContext(), WebViewScreen.class);
+            intent1.putExtra("url",wikiLink);
+            intent1.putExtra("missionname",missionName.getText().toString());
+            startActivity(intent1);
             }
         });
     }
