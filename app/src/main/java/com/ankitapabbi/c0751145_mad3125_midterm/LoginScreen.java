@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -19,6 +20,7 @@ public class LoginScreen extends AppCompatActivity {
     EditText userEmail,userPassword;
     Button login;
     MyDataBase mdb;
+    CheckBox rememberMe;
     SharedPreferences sharedPreferences;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +29,7 @@ public class LoginScreen extends AppCompatActivity {
         userEmail= (EditText)findViewById(R.id.userEmail);
         userPassword = (EditText)findViewById(R.id.userPassword);
         login = (Button)findViewById(R.id.loginBtn);
+        rememberMe = (CheckBox)findViewById(R.id.rememberMe);
         mdb = new MyDataBase(getApplicationContext());
         mdb.open();
         mdb.save("ankita@gmail.com","ankita123");
@@ -36,6 +39,11 @@ public class LoginScreen extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
         final SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        if(sharedPreferences.contains("userEmail")){
+            userEmail.setText(sharedPreferences.getString("userEmail",""));
+            userPassword.setText(sharedPreferences.getString("userPassword",""));
+        }
 
       //  Toast.makeText(getApplicationContext(),"Added",Toast.LENGTH_LONG).show();
 
@@ -60,8 +68,15 @@ public class LoginScreen extends AppCompatActivity {
             int count =  mdb.checkUserExist(email,password);
 
             if(count != 0 ){
+
+                if(rememberMe.isChecked()){
                 editor.putString("userEmail",email);
                 editor.putString("userPassword",password);
+                }else {
+                    editor.remove("userEmail");
+                    editor.remove("userPassword");
+                }
+                editor.apply();
                 Intent intent = new Intent(LoginScreen.this,HomeScreen.class);
                 intent.putExtra("email",email);
                 startActivity(intent);

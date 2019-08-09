@@ -54,7 +54,12 @@
         app:met_primaryColor="#fff"
         app:met_singleLineEllipsis="true"
         />
-
+    <CheckBox
+        android:id="@+id/rememberMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:text="Remember Me?"/>
 
 
     <Button
