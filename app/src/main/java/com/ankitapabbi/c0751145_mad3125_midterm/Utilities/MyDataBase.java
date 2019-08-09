@@ -85,12 +85,13 @@ import java.util.List;
         return data;
     }
      public int checkUserExist(String email,String password) {
+        int count = 0;
 
          String whereQuery = "SELECT  * FROM " + DB_Table+" WHERE "+Email+" = '"+email+"' AND "+Password+ " = '" + password + "'";
 
 
          Cursor cursor = database.rawQuery(whereQuery, null);
-         int count = cursor.getCount();
+          count = cursor.getCount();
          cursor.close();
 
          return count;
