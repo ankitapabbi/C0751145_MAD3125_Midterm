@@ -1,39 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp"
-    android:gravity="center"
-    android:orientation="vertical"
+    android:layout_height="wrap_content"
+
+    android:background="@drawable/wal1"
     tools:context=".LoginScreen">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:padding="10dp"
+        android:orientation="vertical">
+
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="LOGIN SCREEN"
         android:textSize="30sp"
-        android:textColor="#000"/>
+        android:layout_gravity="center"
+        android:textColor="#fff"/>
 
-    <EditText
+
+    <com.rengwuxian.materialedittext.MaterialEditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
         android:id="@+id/userEmail"
+        android:hint="Enter Email"
+        android:textColorHint="#fff"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:met_baseColor="#fff"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="#fff"
+        app:met_singleLineEllipsis="true"
+        />
+    <com.rengwuxian.materialedittext.MaterialEditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Enter Email"/>
-    <EditText
+        android:layout_margin="5dp"
         android:id="@+id/userPassword"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:hint="Enter Password"/>
+        android:hint="Enter Password"
+        android:textColorHint="#fff"
+        android:inputType="textPassword"
+        android:textColor="#fff"
+        android:textSize="20sp"
+        app:met_baseColor="#fff"
+        app:met_floatingLabel="highlight"
+        app:met_primaryColor="#fff"
+        app:met_singleLineEllipsis="true"
+        />
+
+
 
     <Button
         android:id="@+id/loginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:text="Login"/>
+    <TextView
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:text="Login"/>
-
-</LinearLayout>
+        android:textColor="#fff"
+        android:text="All Rights Are Reserved Since 2019."/>
+    </LinearLayout>
+</ScrollView>
