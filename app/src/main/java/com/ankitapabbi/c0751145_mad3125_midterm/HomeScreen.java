@@ -45,11 +45,12 @@ public class HomeScreen extends AppCompatActivity {
 
         dataRecyler.setLayoutManager(new LinearLayoutManager(getApplicationContext(),LinearLayoutManager.VERTICAL,false));
         dataRecyler.setNestedScrollingEnabled(false);
-        listData.clear();
+       // listData.clear();
+        jsonRequest();
         adapter= new MyAdapter(listData,getApplicationContext());
         dataRecyler.setAdapter(adapter);
        // volley_missionData();
-        jsonRequest();
+
 
     }
 
@@ -136,30 +137,31 @@ public class HomeScreen extends AppCompatActivity {
                         missionData.setLaunch_date_unix(jsonObject.getString("launch_date_unix"));
                         missionData.setLaunch_date_utc(jsonObject.getString("launch_date_utc"));
 
-                        JSONArray array1 = jsonObject.getJSONArray("rocket");
+                        JSONObject array1 = jsonObject.getJSONObject("rocket");
 
                         for (int ii=0;ii<=array1.length();ii++){
-                            JSONObject object = array1.getJSONObject(ii);
-                             missionData.setRocket_id(object.getString("rocket_id"));
-                             missionData.setRocket_name(object.getString("rocket_name"));
-                             missionData.setRocket_type(object.getString("rocket_type"));
+
+                             missionData.setRocket_id(array1.getString("rocket_id"));
+                             missionData.setRocket_name(array1.getString("rocket_name"));
+                             missionData.setRocket_type(array1.getString("rocket_type"));
 
                         }
-                        JSONArray array2 = jsonObject.getJSONArray("links");
+                        JSONObject array2 = jsonObject.getJSONObject("links");
 
                         for (int io=0;io<=array2.length();io++){
-                            JSONObject object = array1.getJSONObject(io);
-                            missionData.setArticle_link(object.getString("article_link"));
-                            missionData.setWikipedia(object.getString("wikipedia"));
-                            missionData.setMission_patch(object.getString("mission_patch"));
+
+                            missionData.setArticle_link(array2.getString("article_link"));
+                            missionData.setWikipedia(array2.getString("wikipedia"));
+                            missionData.setMission_patch(array2.getString("mission_patch"));
 
                         }
                         listData.add(missionData);
-                        adapter.notifyDataSetChanged();
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
+
+                    adapter.notifyDataSetChanged();
                 }
 
 
