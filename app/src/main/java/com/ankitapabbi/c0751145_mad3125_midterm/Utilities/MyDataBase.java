@@ -5,11 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.widget.Toast;
+
+import com.ankitapabbi.c0751145_mad3125_midterm.Model.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyDatabase {
+ public class MyDataBase {
 
     public static final String DB_Name="MidTerm.db";
     public static final int DB_Ver=2;
@@ -29,12 +32,12 @@ public class MyDatabase {
     private SQLiteDatabase database;
 
     //all database operation coded here
-    public MyDatabase(Context context){
+    public MyDataBase(Context context){
         c = context;
 
     }
 
-    public MyDatabase open() {
+    public MyDataBase open() {
 
         dbHelper=new DBHelper(c);
 
@@ -43,10 +46,9 @@ public class MyDatabase {
         return this;
     }
 
-    public void save(String id, String email,String password) {
+    public void save( String email,String password) {
 
         ContentValues cv= new ContentValues();
-        cv.put(ID,id);
         cv.put(Email,email);
         cv.put(Password,password);
 
@@ -58,47 +60,42 @@ public class MyDatabase {
         database.close();
     }
 
-    public List<CartData> getCartData()
+
+
+    public List<User> getUserData()
     {
-        List<CartData> data= new ArrayList<>();
-        String[] columns={KEY_ID,Name,Image,Price,Qty,Size,Color,Material,Pro_Var_ID,Pro_ID};
+        List<User> data= new ArrayList<>();
+        String[] columns={ID,Email,Password};
         Cursor cursor=database.query(DB_Table,columns,null,null,null,null,null);
 
-        int iName=cursor.getColumnIndex(Name);
-        int iImage=cursor.getColumnIndex(Image);
-        int iPrice=cursor.getColumnIndex(Price);
-        int iQty=cursor.getColumnIndex(Qty);
-        int iSize=cursor.getColumnIndex(Size);
-        int iColor=cursor.getColumnIndex(Color);
-        int iMaterial=cursor.getColumnIndex(Material);
-        int iId=cursor.getColumnIndex(KEY_ID);
-        int iProdVarID=cursor.getColumnIndex(Pro_Var_ID);
-        int iProID=cursor.getColumnIndex(Pro_ID);
+        int iId=cursor.getColumnIndex(ID);
+        int iEmail=cursor.getColumnIndex(Email);
+        int iPassword=cursor.getColumnIndex(Password);
+
 
         for(cursor.moveToFirst();!cursor.isAfterLast();cursor.moveToNext()){
-            CartData cart = new CartData();
-            cart.setName(cursor.getString(iName));
-            cart.setImage(cursor.getString(iImage));
-            cart.setPrice(cursor.getString(iPrice));
-            cart.setProQty(cursor.getInt(iQty));
-            cart.setSize(cursor.getString(iSize));
-            cart.setColor(cursor.getString(iColor));
-            cart.setMaterial(cursor.getString(iMaterial));
-            cart.setProdId(cursor.getString(iId));
-            cart.setProVarId(cursor.getInt(iProdVarID));
-            cart.setProId(cursor.getInt(iProID));
+            User user = new User();
+            user.setUserId(cursor.getString(iId));
+            user.setUserEmail(cursor.getString(iEmail));
+            user.setUserPassword(cursor.getString(iPassword));
 
-            data.add(cart);
+
+            data.add(user);
         }
         return data;
     }
-    public void delete(String id) {
-        database.delete(DB_Table, KEY_ID+"="+id, null);
-    }
+     public int checkUserExist(String email,String password) {
 
-    public void deleteWithoutId() {
-        database.delete(DB_Table, null, null);
-    }
+         String whereQuery = "SELECT  * FROM " + DB_Table+" WHERE "+Email+" = '"+email+"' AND "+Password+ " = '" + password + "'";
+
+
+         Cursor cursor = database.rawQuery(whereQuery, null);
+         int count = cursor.getCount();
+         cursor.close();
+
+         return count;
+     }
+
 
     public int getProfilesCount() {
         String countQuery = "SELECT  * FROM " + DB_Table;
