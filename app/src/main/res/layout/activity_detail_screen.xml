@@ -89,25 +89,57 @@
                         android:layout_height="200dp"
                         android:layout_gravity="center"
                         android:id="@+id/mPatch"/>
-                    <TextView
-                        android:id="@+id/mission"
+                    <LinearLayout
                         android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:padding="2dp"
+                            android:text="Mission Name"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:layout_marginRight="10dp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+                        <TextView
+                            android:id="@+id/mission"
+                            android:padding="2dp"
+                            android:text="Mission Name"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="20sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content" />
+
+
+                    </LinearLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
                         android:padding="2dp"
-                        android:text="Mission Name"
+                        android:text="Flight Number"
                         android:textColor="@color/colorPrimary"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        android:layout_marginRight="10dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
-
                     <TextView
                         android:id="@+id/flightNumber"
                         android:text="Flight Number"
                         android:textColor="@color/colorPrimary"
                         android:textSize="18sp"
-                        android:textStyle="bold"
+
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
+                </LinearLayout>
 
                     <LinearLayout
 
@@ -116,24 +148,71 @@
                         android:orientation="vertical">
 
 
+                        <LinearLayout
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:padding="2dp"
+                                android:text="Mission Year"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
 
                         <TextView
                             android:id="@+id/missionYear"
                             android:text="Mission Year"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
-                            android:textStyle="bold"
+
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:padding="2dp"
+                                android:text="Launch Date Unix"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/launchDate1"
                             android:text="launch date unix"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
-                            android:textStyle="bold"
-
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:padding="2dp"
+                                android:text="Launch Date Utc"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/launchDate2"
                             android:text="launch date utc"
@@ -142,30 +221,79 @@
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:padding="2dp"
+                                android:text="Rocket ID"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/rocketId"
                             android:text="Rocket Id"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:padding="2dp"
+                                android:text="Rocket Name"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/rocketName"
                             android:text="Rocket Name"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_marginTop="8dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:padding="2dp"
+                                android:text="Rocket Type"
+                                android:textColor="@color/colorPrimary"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:layout_marginRight="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
                         <TextView
                             android:id="@+id/rocketType"
                             android:text="Rocket Type"
                             android:textColor="@color/colorPrimary"
                             android:textSize="18sp"
-                            android:textStyle="bold"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content" />
+                        </LinearLayout>
 
 
 
@@ -185,13 +313,18 @@
                 android:layout_height="wrap_content">
 
                 <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#000"
+                    android:text="Artical Link Below:"/>
+                <TextView
                     android:id="@+id/arcticalLink"
                     android:layout_marginTop="12dp"
                     android:lineSpacingMultiplier="1.5"
                     android:padding="12dp"
                     android:text="Artical link"
                     android:textSize="14sp"
-                    android:textColor="@android:color/black"
+                    android:textColor="#054BE2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     />

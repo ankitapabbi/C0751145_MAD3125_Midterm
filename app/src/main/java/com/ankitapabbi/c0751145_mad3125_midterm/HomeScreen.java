@@ -44,6 +44,8 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
     Button logout;
     SharedPreferences.Editor editor;
     private SharedPreferences sharedPreferences;
+    private MissionData md;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +53,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
         setContentView(R.layout.activity_home_screen);
         dataRecyler = (RecyclerView)findViewById(R.id.dataRecyler);
         logout = (Button)findViewById(R.id.logoutBtn);
+        md = new MissionData();
 //        queue = Volley.newRequestQueue(this);
 
         sharedPreferences = getSharedPreferences("login",MODE_PRIVATE);
@@ -71,7 +74,7 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
                 editor.remove("userPassword");
                 editor.apply();
 
-                Intent  in = new Intent(getApplicationContext(),LoginScreen.class);
+                Intent  in = new Intent(getApplicationContext(),MainActivity.class);
                 startActivity(in);
                 finish();
             }
@@ -206,6 +209,9 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
     public void clicked(String flight_number, String mission_name, String launch_year, String launch_date_unix, String launch_date_utc, String rocket_id, String rocket_name, String rocket_type, String article_link, String wikipedia, String mission_patch) {
 
         Intent intent = new Intent(HomeScreen.this,DetailScreen.class);
+
+    
+
         intent.putExtra("flight_number",flight_number);
         intent.putExtra("mission_name",mission_name);
         intent.putExtra("launch_year",launch_year);

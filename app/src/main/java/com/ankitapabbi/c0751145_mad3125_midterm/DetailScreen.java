@@ -69,6 +69,7 @@ public class DetailScreen extends AppCompatActivity {
         articallink.setText(intent.getStringExtra("article_link"));
         wikiLink = intent.getStringExtra("wikipedia");
         Glide.with(getApplicationContext()).load(intent.getStringExtra("mission_patch")).into(mPatch);
+        toolbar.setTitle(intent.getStringExtra("mission_name"));
 
 
         btninfo.setOnClickListener(new View.OnClickListener() {
@@ -78,6 +79,15 @@ public class DetailScreen extends AppCompatActivity {
             intent1.putExtra("url",wikiLink);
             intent1.putExtra("missionname",missionName.getText().toString());
             startActivity(intent1);
+            }
+        });
+        articallink.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(getApplicationContext(), WebViewScreen.class);
+                intent1.putExtra("url",intent.getStringExtra("article_link"));
+                intent1.putExtra("missionname",missionName.getText().toString());
+                startActivity(intent1);
             }
         });
     }
