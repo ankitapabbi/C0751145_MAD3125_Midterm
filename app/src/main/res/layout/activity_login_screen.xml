@@ -16,13 +16,20 @@
         android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOGIN SCREEN"
-        android:textSize="30sp"
-        android:layout_gravity="center"
-        android:textColor="#fff"/>
+        <ImageView
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:src="@drawable/startup"
+            android:tint="#fff"
+            android:layout_gravity="center"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="LOGIN HERE"
+            android:textSize="20sp"
+            android:layout_marginTop="10dp"
+            android:layout_gravity="center"
+            android:textColor="#fff"/>
 
 
     <com.rengwuxian.materialedittext.MaterialEditText
@@ -66,11 +73,12 @@
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="20dp"
+        android:background="@drawable/buttonstyle"
         android:text="Login"/>
     <TextView
         android:layout_gravity="center"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="#fff"
