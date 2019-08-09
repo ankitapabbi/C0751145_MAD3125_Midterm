@@ -16,17 +16,26 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="36,520"
+            android:text="101 Missions"
             android:layout_gravity="center"
             android:layout_marginTop="150dp"
-            android:textSize="60sp"
+            android:textSize="50sp"
             android:textStyle="bold"
             android:textColor="@color/lightorange"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="CLIENTS SUBSCRIBED RIGHT NOW"
+            android:text="EXPLORE THE NATION"
             android:layout_marginTop="50dp"
+            android:layout_gravity="center"
+            android:textAlignment="center"
+            android:textSize="30sp"
+            android:textColor="@color/lightorangedark"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="BE THE PRIDE"
+            android:layout_marginTop="10dp"
             android:layout_gravity="center"
             android:textAlignment="center"
             android:textSize="30sp"
