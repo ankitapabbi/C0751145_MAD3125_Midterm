@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -37,6 +38,7 @@ public class DetailScreen extends AppCompatActivity {
 
 
 
+
         Intent intent = getIntent();
 
         flightNumber.setText(intent.getStringExtra("flight_number"));
@@ -52,5 +54,11 @@ public class DetailScreen extends AppCompatActivity {
         Glide.with(getApplicationContext()).load(intent.getStringExtra("mission_patch")).into(mPatch);
 
 
+        btninfo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
     }
 }
