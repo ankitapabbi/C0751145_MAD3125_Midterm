@@ -182,6 +182,22 @@ public class HomeScreen extends AppCompatActivity implements AdapterListener {
     @Override
     public void clicked(String flight_number, String mission_name, String launch_year, String launch_date_unix, String launch_date_utc, String rocket_id, String rocket_name, String rocket_type, String article_link, String wikipedia, String mission_patch) {
 
-        
+        Intent intent = new Intent(HomeScreen.this,DetailScreen.class);
+        intent.putExtra("flight_number",flight_number);
+        intent.putExtra("mission_name",mission_name);
+        intent.putExtra("launch_year",launch_year);
+        intent.putExtra("launch_date_unix",launch_date_unix);
+        intent.putExtra("launch_date_utc",launch_date_utc);
+        intent.putExtra("rocket_id",rocket_id);
+        intent.putExtra("rocket_name",rocket_name);
+        intent.putExtra("rocket_type",rocket_type);
+        intent.putExtra("article_link",article_link);
+        intent.putExtra("wikipedia",wikipedia);
+        intent.putExtra("mission_patch",mission_patch);
+
+        Toast.makeText(getApplicationContext(),mission_name,Toast.LENGTH_LONG).show();
+
+        startActivity(intent);
+
     }
 }
