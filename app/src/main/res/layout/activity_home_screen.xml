@@ -7,6 +7,27 @@
     android:orientation="vertical"
     tools:context=".HomeScreen">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        app:title="Mission List"
+        app:titleTextColor="#fff"
+        android:theme="@style/ThemeOverlay.AppCompat.Light"
+        android:layout_width="match_parent"
+        android:background="@color/colorPrimary"
+        android:layout_height="?android:attr/actionBarSize"
+        app:layout_collapseMode="parallax">
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#fff"
+            android:layout_marginLeft="150dp"
+            android:textStyle="bold"
+            android:textColor="@color/colorPrimary"
+            android:text="Logout"/>
+
+    </android.support.v7.widget.Toolbar>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/dataRecyler"
         android:layout_width="match_parent"
